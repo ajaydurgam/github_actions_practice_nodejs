@@ -1,0 +1,25 @@
+name: test lint and Deploy workflow
+on: [push]
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout application
+        uses: actions/checkout@v3
+      - name: install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: install dependencies
+        run: npm ci
+      - name: runtest
+        run: npm test
+      - name: Deploy application
+        run: echo "Deployed into the server successfully..."
+  Output:
+    needs: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: echo "${{ toJSON(github) }}
+    
