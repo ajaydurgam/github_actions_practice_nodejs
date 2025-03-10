@@ -18,7 +18,6 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
-          prettier: true
       - name: Deploy application
         run: echo "Deployed into the server successfully..."
   Output:
